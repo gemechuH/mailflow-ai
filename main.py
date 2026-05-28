@@ -8,6 +8,7 @@ from reply_generator import generate_reply
 from summary import DailySummary
 from email_log import log_email
 from email_template import build_html_email
+from telegram_notify import notify_email_processed, notify_daily_summary
 
 logging.basicConfig(
     level=logging.INFO,
@@ -87,9 +88,10 @@ def process_email(email_data: dict):
     # Step 5: Mark as read
     mark_as_read(mail_conn, uid)
 
-    # Step 6: Record in daily summary and history log
+    # Step 6: Record in daily summary, history log, and notify Telegram
     daily.record(department)
     log_email(sender, subject, department, reply_to)
+    notify_email_processed(sender, subject, department)
 
     print(f"\n{'='*55}")
     print(f"  FROM      : {sender}")

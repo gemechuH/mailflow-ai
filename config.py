@@ -11,7 +11,12 @@ COMPANY_NAME = os.getenv("COMPANY_NAME", "Our Company")
 SUMMARY_HOUR = int(os.getenv("SUMMARY_HOUR", 8))
 SUMMARY_EMAIL = os.getenv("SUMMARY_EMAIL", GMAIL_ADDRESS)
 BRAND_COLOR = os.getenv("BRAND_COLOR", "#1a1a2e")
-BRAND_LOGO_URL = os.getenv("BRAND_LOGO_URL", "")  # paste your logo image URL here
+BRAND_LOGO_URL = os.getenv("BRAND_LOGO_URL", "")
+TELEGRAM_BOT_TOKEN   = os.getenv("TELEGRAM_BOT_TOKEN", "")
+TELEGRAM_CHAT_ID     = os.getenv("TELEGRAM_CHAT_ID", "")        # owner — receives all
+TELEGRAM_CHAT_SALES  = os.getenv("TELEGRAM_CHAT_SALES", "")     # optional: sales team only
+TELEGRAM_CHAT_ACCOUNT= os.getenv("TELEGRAM_CHAT_ACCOUNT", "")   # optional: account team only
+TELEGRAM_CHAT_SUPPORT= os.getenv("TELEGRAM_CHAT_SUPPORT", "")   # optional: support team only
 
 IMAP_SERVER = "imap.gmail.com"
 IMAP_PORT = 993

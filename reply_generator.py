@@ -14,7 +14,11 @@ def generate_reply(department: str, sender_name: str, subject: str, body: str) -
 Write a short, professional auto-reply email. Tone: {tone}.
 
 Rules:
-- Greet the sender by first name if detectable, otherwise use "there"
+- IMPORTANT: Detect the language the customer wrote in and reply in that EXACT same language
+- Supported languages include: Afaan Oromo (Oromiffa), Amharic, Arabic, French, Spanish, English and others
+- If the email is in Afaan Oromo → reply in Afaan Oromo. Amharic → Amharic. Arabic → Arabic. French → French. English → English. etc.
+- For Afaan Oromo use natural Oromo words and greetings (e.g. Nagaan, Galatoomaa)
+- Greet the sender by first name if detectable, otherwise use a natural greeting for that language
 - Acknowledge what they wrote about in 1 sentence
 - Tell them their message has been received and our team will follow up within 12-24 hours
 - Do NOT mention any email address, phone number, or direct contact details

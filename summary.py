@@ -130,4 +130,11 @@ BREAKDOWN BY DEPARTMENT
             logger.error(f"Failed to send summary: {e}")
             print(f"  ERROR sending summary: {e}")
 
+        # Also push summary to Telegram
+        try:
+            from telegram_notify import notify_daily_summary
+            notify_daily_summary(total, self.skipped, self.counts)
+        except Exception:
+            pass
+
         self.reset()
