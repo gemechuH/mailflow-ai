@@ -7,6 +7,7 @@ from classifier import classify_email
 from reply_generator import generate_reply
 from summary import DailySummary
 from email_log import log_email
+from email_template import build_html_email
 
 logging.basicConfig(
     level=logging.INFO,
@@ -73,8 +74,9 @@ def process_email(email_data: dict):
     sender_name = extract_first_name(sender)
     reply_body = generate_reply(department, sender_name, subject, body)
 
-    # Step 3: Send auto-reply
-    send_reply(reply_to, subject, reply_body)
+    # Step 3: Build HTML and send branded reply
+    html_body = build_html_email(department, reply_body)
+    send_reply(reply_to, subject, reply_body, html_body)
 
     # Step 4: Forward to department
     dept_email = DEPARTMENTS[department]["email"]

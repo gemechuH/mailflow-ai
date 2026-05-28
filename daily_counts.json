@@ -3,9 +3,9 @@
   "counts": {
     "sales": 0,
     "account": 0,
-    "support": 0,
+    "support": 4,
     "general": 0
   },
-  "skipped": 0,
+  "skipped": 1,
   "errors": 0
 }

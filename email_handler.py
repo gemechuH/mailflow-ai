@@ -139,13 +139,17 @@ def close_connection(mail_conn):
         pass
 
 
-def send_reply(to_address: str, subject: str, body: str):
+def send_reply(to_address: str, subject: str, plain_body: str, html_body: str = None):
     try:
         msg = MIMEMultipart("alternative")
         msg["Subject"] = f"Re: {subject}" if not subject.startswith("Re:") else subject
         msg["From"] = GMAIL_ADDRESS
         msg["To"] = to_address
-        msg.attach(MIMEText(body, "plain"))
+
+        # Plain text fallback first, then HTML (email clients prefer last part)
+        msg.attach(MIMEText(plain_body, "plain"))
+        if html_body:
+            msg.attach(MIMEText(html_body, "html"))
 
         with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
             server.ehlo()
