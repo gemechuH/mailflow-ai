@@ -1,0 +1,4 @@
+.env
+email_auto.log
+__pycache__/
+*.pyc
